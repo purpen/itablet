@@ -1,0 +1,8 @@
+---
+all:
+    uri.admin_root:"/app/admin/authorize/welcome"
+    uri.root:'http://itablet.net'
+    uri.login:'/app/admin/authorize/login'
+    uri.login.defaultback:'http://9ibox.net'
+    uri.static:'http://9ibox.net'
+    uri.elogin:'/app/eshop/profile/login'
