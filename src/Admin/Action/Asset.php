@@ -31,7 +31,7 @@ class Admin_Action_Asset extends Admin_Action_Entry implements Anole_Dispatcher_
      * 
      * @var bool
      */
-    const WATER_MARK = true;
+    const WATER_MARK = false;
     
     private $_upload_files = array();
     /**

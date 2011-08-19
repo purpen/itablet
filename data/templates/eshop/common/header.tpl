@@ -50,12 +50,14 @@
 				<li>
 					<a href="{Common_Smarty_Url_format key=domain}" >软件</a>
 				</li>
+				<!--
 				<li>
 					<a href="#" >社区</a>
 				</li>
 				<li>
 					<a href="#" >活动</a>
 				</li>
+				-->
 			</ul>
 		</div>
 		
