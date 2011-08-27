@@ -166,14 +166,6 @@ class Common_Smarty_Product extends Anole_Object {
         return $orderby;
     }
     
-    public static function smarty_modifier_cnTruncate($content,$len=118,$padding='...'){
-        if (mb_strlen($content, 'utf-8') > $len){
-            //添加省略号(...)
-            return iconv_substr($content, 0, $len - 1, 'utf-8').$padding;
-        }
-        return iconv_substr($content, 0, $len, 'utf-8');
-    }
-    
 	/**
 	 * 获取销售排行
 	 *

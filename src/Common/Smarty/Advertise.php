@@ -148,6 +148,48 @@ class Common_Smarty_Advertise extends Anole_Object {
             return $data;
         }
     }
+
+	public static function cut_str($string, $sublen, $start = 0, $code = 'utf-8') { 
+	    if($code == 'utf-8') { 
+	        $pa = "/[\x01-\x7f]|[\xc2-\xdf][\x80-\xbf]|\xe0[\xa0-\xbf][\x80-\xbf]|[\xe1-\xef][\x80-\xbf][\x80-\xbf]|\xf0[\x90-\xbf][\x80-\xbf][\x80-\xbf]|[\xf1-\xf7][\x80-\xbf][\x80-\xbf][\x80-\xbf]/"; 
+	        preg_match_all($pa, $string, $t_string); 
+
+	        if(count($t_string[0]) - $start > $sublen) {
+				return join('', array_slice($t_string[0], $start, $sublen))."..."; 
+			}
+	        return join('', array_slice($t_string[0], $start, $sublen)); 
+	    } else { 
+	        $start = $start*2; 
+	        $sublen = $sublen*2; 
+	        $strlen = strlen($string); 
+	        $tmpstr = ''; 
+
+	        for($i=0; $i< $strlen; $i++) { 
+	            if($i>=$start && $i< ($start+$sublen)) 
+	            { 
+	                if(ord(substr($string, $i, 1))>129) 
+	                { 
+	                    $tmpstr.= substr($string, $i, 2); 
+	                } 
+	                else 
+	                { 
+	                    $tmpstr.= substr($string, $i, 1); 
+	                } 
+	            } 
+	            if(ord(substr($string, $i, 1))>129) $i++; 
+	        } 
+	        if(strlen($tmpstr)< $strlen ) $tmpstr.= "..."; 
+	        return $tmpstr; 
+	    } 
+	}
+	
+	public static function smarty_modifier_cnTruncate($content,$len=118,$padding='...'){
+        if (mb_strlen($content, 'utf-8') > $len){
+            //添加省略号(...)
+            return self::cut_str($content, $len - 1, 0,  'utf-8').$padding;
+        }
+        return self::cut_str($content, $len, 0,  'utf-8');
+    }
 }
 /**vim:sw=4 et ts=4 **/
 ?>

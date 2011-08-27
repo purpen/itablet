@@ -22,7 +22,7 @@
 		<ul class="carousel_nav">
 			{Common_Smarty_Advertise_findAdmany number="index-sps" size=6 item=ad}
 			<li {if $first}class="active"{/if} id="n_{$loop}">
-				<a href="{$ad.link}#{$loop}" target="_blank">{$ad.title}</a>
+				<a href="{$ad.link}#{$loop}" target="_blank">{$ad.title|Common_Smarty_Advertise_cnTruncate:16}</a>
 			</li>
 			{/Common_Smarty_Advertise_findAdmany}
 		</ul>
