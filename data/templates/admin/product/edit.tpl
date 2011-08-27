@@ -273,7 +273,7 @@
 									<script type="text/javascript" src="/js/a/init_tiny.js"></script>
 									<div class="inside">
 										<label for="content" class="screen-reader-text">产品介绍</label>
-										<textarea id="cbody" tabindex="13" name="content" rows="3">{$product.content|stripslashes}</textarea>
+										<textarea id="cbody" tabindex="13" name="content" cols="10" rows="15" >{$product.content|stripslashes}</textarea>
 									</div>
 								</div>
 							</div>

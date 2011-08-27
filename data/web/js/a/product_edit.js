@@ -60,6 +60,17 @@ $(function(){
 	
 });
 
+//insert asset into editor
+function insert_asset(){   	
+    try{
+		var url = getUrl(this.href);
+		$.get(url,{}, function(data){
+			//insert into editor(tinyMCE is global)
+			tinyMCE.execCommand('mceInsertContent', false, data); 
+		});
+	}catch(e){ alert("insert asset: "+ e);}
+}
+
 function getNowPageContent(){
     return tinyMCE.get('cbody').getContent();
 }
@@ -71,20 +82,9 @@ function changeContetnHandler(inst) {
     $('#cbody').val(body);
 }
 function rebuildContent(){
-	var body = inst.getBody().innerHTML;
-    $('#cbody').val(body);
+	$('#cbody').val(getNowPageContent());
 }
 
-//insert asset into editor
-function insert_asset(){   	
-    try{
-		var url = getUrl(this.href);
-		$.get(url,{}, function(data){
-			//insert into editor(tinyMCE is global)
-			tinyMCE.execCommand('mceInsertContent', false, data); 
-		});
-	}catch(e){ alert("insert asset: "+ e);}
-}
 
 function hook_validate_frm(){
 	$('#addproduct').validate({

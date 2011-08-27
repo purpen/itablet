@@ -71,9 +71,6 @@ class Eshop_Action_Index extends Eshop_Action_Common {
 		$this->putContext('market_product_list', $market_product_list);
     	$this->putContext('stick_product_list', $stick_product_list);
     	$this->putContext('category_channel', $category_channel);
-
-		$wbposts = $this->findWeibo();
-		$this->putContext('wbposts', $wbposts);
     	
     	$this->putSharedParam();
 		

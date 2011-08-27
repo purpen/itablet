@@ -479,7 +479,7 @@ class Eshop_Action_Mall extends Eshop_Action_Common {
 				
                 if($parent_type == Common_Model_Constant::PRODUCT_THUMB){
                     $product['asset_thumb'] = $asset_list[$i];
-					$detail_image[] = $asset_list[$i];
+					//$detail_image[] = $asset_list[$i];
                     //过滤掉缩略图
                     //unset($asset_list[$i]);
                 }
