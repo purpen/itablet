@@ -205,8 +205,10 @@ a:hover{text-decoration:underline;}
 	padding-left:20px;
 }
 .auth .topnav {
-	width: 260px;
-	margin-top:3px;
+	margin-top: 3px;
+    padding-right: 20px;
+    text-align: right;
+    width: 360px;
 }
 .buy-cart {
 	width: 150px;

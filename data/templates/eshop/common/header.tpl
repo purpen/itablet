@@ -27,19 +27,19 @@
 		<div class="menu-box">
 			<ul class="clearfix">
 				<li>
-					<a href="{Common_Smarty_Url_format key=domain}" class="actived">首 页</a>
+					<a href="{Common_Smarty_Url_format key=domain}" {if $current_menu == 'tab_index'}class="actived"{/if}>首 页</a>
 				</li>
 				<li>
-					<a href="{Common_Smarty_Url_format key=channel slug=tablet}" >数位板</a>
+					<a href="{Common_Smarty_Url_format key=channel slug=tablet}" {if $current_menu == 'tab_tablet'}class="actived"{/if}>数位板</a>
 				</li>
 				<li>
-					<a href="{Common_Smarty_Url_format key=channel slug=worksite}" >工作站</a>
+					<a href="{Common_Smarty_Url_format key=channel slug=worksite}" {if $current_menu == 'tab_worksite'}class="actived"{/if}>工作站</a>
 				</li>
 				<li>
-					<a href="{Common_Smarty_Url_format key=channel slug=notepad}" >笔记本</a>
+					<a href="{Common_Smarty_Url_format key=channel slug=notepad}" {if $current_menu == 'tab_notepad'}class="actived"{/if}>笔记本</a>
 				</li>
 				<li>
-					<a href="{Common_Smarty_Url_format key=channel slug=peijian}" >配件</a>
+					<a href="{Common_Smarty_Url_format key=channel slug=peijian}" {if $current_menu == 'tab_peijian'}class="actived"{/if} >配件</a>
 				</li>
 				<li>
 					<a href="{Common_Smarty_Url_format key=domain}" >图书</a>

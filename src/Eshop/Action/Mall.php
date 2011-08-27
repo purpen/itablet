@@ -340,7 +340,8 @@ class Eshop_Action_Mall extends Eshop_Action_Common {
         $this->putContext('children_category', $children_category);
 
 		$this->putSharedParam();
-        
+        $this->putContext('current_menu', 'tab_'.$slug);
+		
         return $this->smartyResult('eshop.channel');
     }
     

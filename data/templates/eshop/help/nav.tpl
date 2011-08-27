@@ -2,7 +2,6 @@
 	<h3>新手入门</h3>
 	<ul>
 		<li><a href="{Common_Smarty_Url_format key=helper name=register}" >注册新用户</a></li>
-		<li><a href="{Common_Smarty_Url_format key=helper name=membership}" >会员制度</a></li>
 		<li><a href="{Common_Smarty_Url_format key=helper name=features}" >我的帐户</a></li>
 		<li><a href="{Common_Smarty_Url_format key=helper name=findpasswd}" >如何找回密码</a></li>
 	</ul>
@@ -21,14 +20,7 @@
 	</ul>
 	<h3>售后服务</h3>
 	<ul>
-		<li><a href="{Common_Smarty_Url_format key=helper name=return_policy}" >退换货政策</a></li>
-		<li><a href="{Common_Smarty_Url_format key=helper name=apply_return}" >如何办理退换货</a></li>
-		<li><a href="{Common_Smarty_Url_format key=helper name=refund}" >如何办理退款</a></li>
-		<li><a href="{Common_Smarty_Url_format key=helper name=invoice}" >发票制度说明</a></li>
-	</ul>
-	<h3>服务信息</h3>
-	<ul>
-		<li><a href="{Common_Smarty_Url_format key=helper name=vouchers}" >关于购物优惠</a></li>
-		<li><a href="{Common_Smarty_Url_format key=helper name=packaging}" >关于产品包装与贺卡</a></li>
+		<li><a href="{Common_Smarty_Url_format key=helper name=return_policy}" >退换货原则</a></li>
+		<li><a href="{Common_Smarty_Url_format key=helper name=apply_return}" >产品保修条款</a></li>
 	</ul>
 </div>

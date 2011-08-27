@@ -20,27 +20,19 @@
 
 	<div id="carousel"> <!--slidepicture-->
 		<ul class="carousel_nav">
-			<li class="active">
-				<a href="#" target="_blank">Apple 27” iMac</a>
+			{Common_Smarty_Advertise_findAdmany number="index-sps" size=6 item=ad}
+			<li {if $first}class="active"{/if} id="n_{$loop}">
+				<a href="{$ad.link}#{$loop}" target="_blank">{$ad.title}</a>
 			</li>
-			<li>
-				<a href="#" target="_blank">Apple 27” iMac</a>
-			</li>
-			<li>
-				<a href="#" target="_blank">Apple 27” iMac</a>
-			</li>
-			<li>
-				<a href="#" target="_blank">Apple 27” iMac</a>
-			</li>
-			<li>
-				<a href="#" target="_blank">Apple 27” iMac</a>
-			</li>
+			{/Common_Smarty_Advertise_findAdmany}
 		</ul>
+		{Common_Smarty_Advertise_findAdmany number="index-sps" size=6 item=ad}
 		<div class="panel carousel_item" id="slot{$loop}">
 			<a href="{$ad.link}" title="{$ad.title}" target="_blank">
-				<img src="/images/eshop/spic-700x300.jpg" alt="{$ad.title}" />
+				<img src="{$ad.thumb}" alt="{$ad.title}" />
 			</a>
 		</div>
+		{/Common_Smarty_Advertise_findAdmany}
 	</div>
 	
 	<div id="container">
@@ -55,12 +47,12 @@
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a href="{Common_Smarty_Url_format key='brand_product' id=3}">
 						<img src="/images/eshop/brand-apple.jpg" alt="apple"/>
 					</a>
 				</li>
 				<li class="last">
-					<a href="#">
+					<a href="{Common_Smarty_Url_format key='brand_product' id=2}">
 						<img src="/images/eshop/brand-hp.jpg" alt="hp"/>
 					</a>
 				</li>

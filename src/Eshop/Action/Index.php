@@ -73,6 +73,8 @@ class Eshop_Action_Index extends Eshop_Action_Common {
     	$this->putContext('category_channel', $category_channel);
     	
     	$this->putSharedParam();
+
+		$this->putContext('current_menu', 'tab_index');
 		
     	return $this->smartyResult('eshop.index');
     }
