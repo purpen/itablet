@@ -36,10 +36,10 @@
 					<a href="{Common_Smarty_Url_format key=channel slug=worksite}" >工作站</a>
 				</li>
 				<li>
-					<a href="{Common_Smarty_Url_format key=domain}" >笔记本</a>
+					<a href="{Common_Smarty_Url_format key=channel slug=notepad}" >笔记本</a>
 				</li>
 				<li>
-					<a href="{Common_Smarty_Url_format key=domain}" >配件</a>
+					<a href="{Common_Smarty_Url_format key=channel slug=peijian}" >配件</a>
 				</li>
 				<li>
 					<a href="{Common_Smarty_Url_format key=domain}" >图书</a>
