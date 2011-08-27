@@ -9,7 +9,7 @@
 		<div class="auth mb-10 fr clearfix">
 			<div class="topnav ablack fl">
 				{if $user_auth_name}
-				<a href="{Common_Smarty_Url_format key=register}" class="red">您好，{$user_auth_name}</a> | <a href="{Common_Smarty_Url_format key=manage_center}">我的帐户</a> | <a href="{Common_Smarty_Url_format key=logout}">退出登录</a> | 
+				<a href="{Common_Smarty_Url_format key=register}" class="red">您好，{$user_auth_name}</a> | <a href="{Common_Smarty_Url_format key=manage_center}">我的帐户</a> | <a href="{Common_Smarty_Url_format key=domain}/app/admin/">管理中心</a> | <a href="{Common_Smarty_Url_format key=logout}">退出登录</a> | 
 				{else}
 				<a href="{Common_Smarty_Url_format key=login}" >登录</a> | <a href="{Common_Smarty_Url_format key=register}" >注册</a> | 
 				{/if}
