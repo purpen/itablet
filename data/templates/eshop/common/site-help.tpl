@@ -1,7 +1,7 @@
 <div id="ibox-help" class="clearfix">
 	<ul>
 		<li><a href="{Common_Smarty_Url_format key=helper name=register}" >注册新用户</a></li>
-		<li><a href="{Common_Smarty_Url_format key=helper name=membership}" >艺柏家会员制度</a></li>
+		<li><a href="{Common_Smarty_Url_format key=helper name=membership}" >万行商城会员制度</a></li>
 		<li><a href="{Common_Smarty_Url_format key=helper name=features}" >我的帐户</a></li>
 		<li><a href="{Common_Smarty_Url_format key=helper name=findpasswd}" >如何找回密码</a></li>
 	</ul>
