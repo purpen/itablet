@@ -476,6 +476,7 @@ class Eshop_Action_Profile extends Eshop_Action_Common {
 		$image->outputImage();
 		$this->getContext()->setSession('validatecode', $image->check_code);
 		self::debug("write to session[".$image->check_code."].", __METHOD__);
+		
 	}
     /**
      * 保存注册用户
@@ -492,9 +493,9 @@ class Eshop_Action_Profile extends Eshop_Action_Common {
 		$checkcode = $this->getCheckcode();
 		$session_checkcode = $this->getContext()->getSession('validatecode');
 		self::debug("get checkcode[$checkcode] and session[".$session_checkcode."].", __METHOD__);
-		if($session_checkcode != $checkcode){
-			return $this->_hintResult('输入的验证码不对，请返回重试！',true,$back_url);
-		}
+		#if($session_checkcode != $checkcode){
+		#	return $this->_hintResult('输入的验证码不对，请返回重试！',true,$back_url);
+		#}
         if(empty($id) || $id < 0){
             $model->setIsNew(true);
             $model->setId(null);
