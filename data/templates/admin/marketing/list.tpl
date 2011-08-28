@@ -16,7 +16,7 @@
 	<h2>促销活动列表 <a class="button add-new-h2" title="添加促销活动" href="/app/admin/marketing/edit">添加促销活动</a></h2>
 	<div class="clear"></div>
 	<div id="ajax_request">
-		<img src="/xe-admin/images/loading.gif" alt="loading" />
+		<img src="/images/admin/loading.gif" alt="loading" />
 	</div>
 	<div id="ajax-response"></div>
 	<div id="col-container">

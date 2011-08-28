@@ -17,7 +17,7 @@
 	<h2>定义产品属性 <a class="button add-new-h2" title="添加产品属性" href="/app/admin/features/edit">添加产品属性</a></h2>
 	<div class="clear"></div>
 	<div id="ajax_request">
-		<img src="/xe-admin/images/loading.gif" alt="loading" />
+		<img src="/images/admin/loading.gif" alt="loading" />
 	</div>
 	<div id="ajax-response"></div>
 	<div id="col-container">

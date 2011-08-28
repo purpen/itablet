@@ -19,7 +19,7 @@
 	<h2>分类目录 <a href="/app/admin/category/edit" title="创建新分类目录" class="button add-new-h2">创建新分类目录</a></h2>
 	<div class="clear"></div>
 	<div id="ajax_request">
-		<img src="/xe-admin/images/loading.gif" alt="loading" />
+		<img src="/images/admin/loading.gif" alt="loading" />
 	</div>
 	<div id="ajax-response"></div>
 	<div id="col-container">

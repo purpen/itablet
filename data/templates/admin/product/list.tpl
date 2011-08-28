@@ -18,7 +18,7 @@
 	<h2>产品列表 <a class="button add-new-h2" title="添加新产品" href="/app/admin/product/edit">添加新产品</a></h2>
 	<div class="clear"></div>
 	<div id="ajax_request">
-		<img src="/xe-admin/images/loading.gif" alt="loading" />
+		<img src="/images/admin/loading.gif" alt="loading" />
 	</div>
 	<div id="ajax-response"></div>
 	

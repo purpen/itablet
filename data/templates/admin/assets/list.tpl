@@ -16,7 +16,7 @@
 	<h2>媒体库</h2>
 	<div class="clear"></div>
 	<div id="ajax_request">
-		<img src="/xe-admin/images/loading.gif" alt="loading" />
+		<img src="/images/admin/loading.gif" alt="loading" />
 	</div>
 	<div id="ajax-response"></div>
 	<div id="col-container">
