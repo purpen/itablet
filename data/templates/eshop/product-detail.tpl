@@ -99,7 +99,10 @@
 							<label>品 牌： {$store_brand.title}</label>
 							<a href="{Common_Smarty_Url_format key='brand_product' id=$store_brand.id}" class="more" />更多 {$store_brand.title} 产品 »</a>
 						</div>
-
+						
+						<div class="bebx">
+							<label>型号：{$product.mode|default:'无'}</label>
+						</div>
 						<div class="bebx">
 							<label>价 格： <span class="red">￥{$product.sale_price}</span></label>
 						</div>
@@ -114,6 +117,7 @@
 						<div class="bebx aorange">
 							<label>包装费用： 无</label>  <a href="#" class="ml-20">查看运费</a>
 						</div>
+						
 
 						<div class="bebx clearfix">
 							<form action="{Common_Smarty_Url_format key='add_cart' id=$product.id}" method="post">

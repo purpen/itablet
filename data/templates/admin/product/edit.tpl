@@ -220,8 +220,14 @@
 											<th scope="row">
 												<label for="material">产品材质：</label>
 											</th>
-											<td colspan="3">
-												<input type="text" size="60" value="{$product.material}" id="material" name="material" tabindex="6" />
+											<td>
+												<input type="text" size="40" value="{$product.material}" id="material" name="material" tabindex="6" />
+								            </td>
+											<th scope="row">
+												<label for="mode">产品型号：</label>
+											</th>
+											<td>
+												<input type="text" size="40" value="{$product.mode}" id="mode" name="mode" tabindex="6" />
 								            </td>
 											<th scope="row">
 												<label for="color">产品颜色：</label>

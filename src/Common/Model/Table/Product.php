@@ -91,6 +91,12 @@ abstract class Common_Model_Table_Product extends Anole_ActiveRecord_Base {
     'type' => 'S',
     'length' => '50',
   ),
+  'mode' => 
+  array (
+    'name' => 'mode',
+    'type' => 'S',
+    'length' => '200',
+  ),
   'length' => 
   array (
     'name' => 'length',
@@ -482,6 +488,25 @@ abstract class Common_Model_Table_Product extends Anole_ActiveRecord_Base {
      */
     public function getColor(){
         return $this->get('color');
+    }
+	   /**
+     * 设置属性'mode'的值
+     *
+     * @param  string $value
+     * 
+     * @return Product
+     */
+    public function setMode($value){
+        $this->set('mode',$value);
+        return $this;
+    }
+    /**
+     * 获取属性:'mode'的值
+     * 
+     * @return string
+     */
+    public function getMode(){
+        return $this->get('mode');
     }
         /**
      * 设置属性'length'的值
