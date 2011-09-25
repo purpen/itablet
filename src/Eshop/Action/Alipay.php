@@ -21,19 +21,19 @@ class Eshop_Action_Alipay extends Eshop_Action_Common {
      * 
      * @var string
      */
-    private $partner = '2088501571997543';
+    private $partner = '2088702162489557';
     /**
      * 安全检验码
      * 
      * @var string
      */
-    public $security_code = 'rhh9fmr3ndcvh4teo5r0chmvztuytikh';
+    public $security_code = 'k9gnpm4nfd1qmrzyq3y4nzwj31m6fjc5';
     /**
      * 卖家邮箱
      * 
      * @var string
      */
-    public $seller_email = "chen65288934@yahoo.cn";
+    public $seller_email = "988238@qq.com";
     /**
      * 字符编码格式 目前支持GBK或utf-8
      * 
