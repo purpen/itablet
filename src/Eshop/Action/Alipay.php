@@ -111,8 +111,8 @@ class Eshop_Action_Alipay extends Eshop_Action_Common {
         }
         //start to pay
         $pay_money = $model['pay_money'];
-        $subject = "www.100jia.cc";
-        $body = "100jia.cc Eshop";
+        $subject = "www.whshop.com.cn";
+        $body = "WHshop.com.cn Eshop";
         //支付宝传递参数
         $parameter = array(
             'service'=>'create_direct_pay_by_user',
