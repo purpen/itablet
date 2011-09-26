@@ -115,7 +115,7 @@ class Eshop_Action_Alipay extends Eshop_Action_Common {
         $body = "WHshop.com.cn Eshop";
         //支付宝传递参数
         $parameter = array(
-            'service'=>'create_direct_pay_by_user',
+            'service'=>'create_partner_trade_by_buyer',
             'partner'=>$this->partner,
             'return_url'=>$this->return_url,
             'notify_url'=>$this->notify_url,
