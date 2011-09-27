@@ -71,7 +71,7 @@ class Eshop_Action_Alipay extends Eshop_Action_Common {
             return $this->_hintResult("订单[$reference]已付款！",false);
         }
         //start to pay
-        $subject = "万行商城商品";
+        $subject = "Whshop Goods";
         $body = "WHshop.com.cn Eshop";
 
 		$price	= $model['total_money'];	//订单总金额，显示在支付宝收银台里的“应付总额”里
@@ -88,7 +88,7 @@ class Eshop_Action_Alipay extends Eshop_Action_Common {
 		//收货信息格式请严格按照姓名、地址、邮编、电话、手机的格式填写
 		$receive_name		= $model['name'];
 		$receive_address	= $model['address'];
-		$receive_zip		= $model['zip'];
+		$receive_zip		= !empty($model['zip']) ? $model['zip'] : '100015';
 		$receive_phone		= $model['telephone'];
 		$receive_mobile		= $model['mobie'];
 		
