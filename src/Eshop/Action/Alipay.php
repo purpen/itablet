@@ -155,8 +155,12 @@ class Eshop_Action_Alipay extends Eshop_Action_Common {
             
             $trade_status = $_POST['trade_status'];
 			$status_array = array('WAIT_SELLER_SEND_GOODS','WAIT_BUYER_CONFIRM_GOODS','TRADE_FINISHED');
-            if(in_array($trade_status,$status_array)){
-                //支付成功
+            if($trade_status == 'WAIT_BUYER_PAY'){
+				# 该判断表示买家已在支付宝交易管理中产生了交易记录，但没有付款
+                self::warn("The buyer no pay!", __METHOD__);
+				$result = "success";
+			}elseif($trade_status == 'WAIT_SELLER_SEND_GOODS'){
+                # 该判断表示买家已在支付宝交易管理中产生了交易记录且付款成功，但卖家没有发货
                 self::warn("verify_success", __METHOD__);
                 try{
                     $order = new Common_Model_Orders();
@@ -193,10 +197,81 @@ class Eshop_Action_Alipay extends Eshop_Action_Common {
                     $result = "fail";
                     self::warn("支付宝支付订单[$order_ref]异常：".$e->getMessage(),__METHOD__);
                 }
+			}elseif($trade_status == 'WAIT_BUYER_CONFIRM_GOODS'){
+				# 该判断表示卖家已经发了货，但买家还没有做确认收货的操作
+				try{
+                    $order = new Common_Model_Orders();
+                    $options = array(
+                        'condition'=>'reference=?',
+                        'vars'=>array($order_ref)
+                    );
+                    $order->findFirst($options);
+                        
+                    if($order->count()){
+                        $_id = $order['id'];
+                        $pay_money = $order['pay_money'];
+                        $status = $order['status'];
+                        /*
+                        if($pay_money != $payAmount){
+                            self::warn("支付金额[$payAmount]与应付金额[$pay_money]不等!", __METHOD__);
+                            $result = "fail";
+                            return $this->rawResult($result);
+                        }*/
+                        //验证此订单是否已经付款
+                        if($status <= Common_Model_Constant::ORDER_SENDED_GOODS){
+                            //设置订单状态为已配货中
+                            $order->setSendedGoods($_id);
+                            self::debug("更新订单状态为已发货等待确认。 -alipay。",__METHOD__);
+                        }else{
+                            self::warn("此订单[$order_ref]已支付成功！-alipay",__METHOD__);
+                        }
+                        $result = "success";
+                    }else{
+                        $msg = "此订单号[$order_ref]不存在!";
+                        self::warn("此订单号[$order_ref]不存在!",__METHOD__);
+                    }
+                }catch(Anole_Exception $e){
+                    $result = "fail";
+                    self::warn("支付宝支付订单[$order_ref]异常：".$e->getMessage(),__METHOD__);
+                }
+				
+			}elseif($trade_status == 'TRADE_FINISHED'){
+				# 该判断表示买家已经确认收货，这笔交易完成
+				try{
+                    $order = new Common_Model_Orders();
+                    $options = array(
+                        'condition'=>'reference=?',
+                        'vars'=>array($order_ref)
+                    );
+                    $order->findFirst($options);
+                        
+                    if($order->count()){
+                        $_id = $order['id'];
+                        $pay_money = $order['pay_money'];
+                        $status = $order['status'];
+                        //验证此订单是否已经付款
+                        if($status <= Common_Model_Constant::ORDER_PUBLISHED){
+                            //设置订单状态为完成
+                            $order->setOrderPublished($_id);
+                            self::debug("更新订单状态为已完成。 -alipay。",__METHOD__);
+                        }else{
+                            self::warn("此订单[$order_ref]已成功！-alipay",__METHOD__);
+                        }
+                        $result = "success";
+                    }else{
+                        $msg = "此订单号[$order_ref]不存在!";
+                        self::warn("此订单号[$order_ref]不存在!",__METHOD__);
+                    }
+                }catch(Anole_Exception $e){
+                    $result = "fail";
+                    self::warn("支付宝支付订单[$order_ref]异常：".$e->getMessage(),__METHOD__);
+                }
+	
             }else{
                 self::warn("支付未完成-alipay", __METHOD__);
                 $result = "fail";
             }
+
         }else{
             //支付失败
             self::warn("verify_failed", __METHOD__);
