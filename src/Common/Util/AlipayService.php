@@ -19,11 +19,12 @@ class Common_Util_AlipayService extends Anole_Object {
      */
 	public function create_partner_trade_by_buyer($para_temp) {
 		//设置按钮名称
-		$button_name = "确认";
+		#$button_name = "确认";
 		//生成表单提交HTML文本信息
-		$html_text = $this->buildForm($para_temp, $this->alipay_gateway_new, "get", $button_name,$this->aliapy_config);
+		#$html_text = $this->buildForm($para_temp, $this->alipay_gateway_new, "get", $button_name,$this->aliapy_config);
 
-		return $html_text;
+		#return $html_text;
+		return $this->buildUrl($para_temp, $this->alipay_gateway_new, "get", $button_name,$this->aliapy_config);
 	}
 	
 	/**
@@ -101,6 +102,16 @@ class Common_Util_AlipayService extends Anole_Object {
 		return $request_data;
 	}
 	
+	public function buildUrl($para_temp, $gateway, $method, $button_name, $aliapy_config){
+		$base_url = $gateway."_input_charset=".trim(strtolower($aliapy_config['input_charset']));
+		//待请求参数数组
+		$para = $this->buildRequestPara($para_temp,$aliapy_config);
+		while (list ($key, $val) = each ($para)) {
+            $sHtml[] = $key.'='.$val;
+        }
+		$base_url .= '&'.implode('&',$sHtml); 
+		return $base_url;
+	}
     /**
      * 构造提交表单HTML数据
      * @param $para_temp 请求参数数组

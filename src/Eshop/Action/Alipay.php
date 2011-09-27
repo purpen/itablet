@@ -124,9 +124,9 @@ class Eshop_Action_Alipay extends Eshop_Action_Common {
 		);
 		
         $alipay = new Common_Util_AlipayService($this->aliapy_config);
-        $html_text = $alipay->create_partner_trade_by_buyer($parameter);
+        $url = $alipay->create_partner_trade_by_buyer($parameter);
         
-        return $this->rawResult($html_text);
+        return $this->redirectResult($url);
     }
     
     /**
