@@ -102,12 +102,37 @@ class Common_Util_AlipayService extends Anole_Object {
 		return $request_data;
 	}
 	
+	/**
+     * 实现多种字符编码方式
+     * 
+     * @param string $input
+     * @param string $_output_charset
+     * @param string $_input_charset
+     * @return string
+     */
+    public function charset_encode($input,$_output_charset,$_input_charset ="utf-8"){
+        $output = "";
+        if(!isset($_output_charset)){
+            $_output_charset = $this->aliapy_config['input_charset'];
+        }
+        if($_input_charset == $_output_charset || $input == null){
+            $output = $input;
+        }elseif(function_exists("mb_convert_encoding")){
+            $output = mb_convert_encoding($input,$_output_charset,$_input_charset);
+        }elseif(function_exists("iconv")){
+            $output = iconv($_input_charset,$_output_charset,$input);
+        }else{
+            die("Sorry,you have no libs support for charset change.");
+        }
+        return $output;
+    }
+	
 	public function buildUrl($para_temp, $gateway, $method, $button_name, $aliapy_config){
 		$base_url = $gateway."_input_charset=".trim(strtolower($aliapy_config['input_charset']));
 		//待请求参数数组
 		$para = $this->buildRequestPara($para_temp,$aliapy_config);
 		while (list ($key, $val) = each ($para)) {
-            $sHtml[] = $key.'='.$val;
+            $sHtml[] = $key.'='.urlencode($this->charset_encode($val,$aliapy_config['input_charset']));
         }
 		$base_url .= '&'.implode('&',$sHtml); 
 		return $base_url;
