@@ -46,6 +46,14 @@ class Eshop_Action_Alipay extends Eshop_Action_Common {
     public function execute(){
         return $this->payment();   
     }
+
+	protected function _url_zhcn($q){
+		$q = base64_encode($q);
+		$q = iconv("UTF-8", "gbk", $q);
+		$q = base64_decode($q);
+		$q = urlencode($q);
+		return $q;
+	}
     /**
      * 选定支付宝进行支付
      * 
@@ -86,8 +94,8 @@ class Eshop_Action_Alipay extends Eshop_Action_Common {
 		//该功能作用在于买家已经在商户网站的下单流程中填过一次收货信息，而不需要买家在支付宝的付款流程中再次填写收货信息。
 		//若要使用该功能，请至少保证receive_name、receive_address有值
 		//收货信息格式请严格按照姓名、地址、邮编、电话、手机的格式填写
-		$receive_name		= urlencode($model['name']);
-		$receive_address	= urlencode($model['address']);
+		$receive_name		= $this->_url_zhcn($model['name']);
+		$receive_address	= $this->_url_zhcn($model['address']);
 		$receive_zip		= !empty($model['zip']) ? $model['zip'] : '100015';
 		$receive_phone		= $model['telephone'];
 		$receive_mobile		= $model['mobie'];
