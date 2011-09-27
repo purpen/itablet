@@ -8,62 +8,23 @@
 class Eshop_Action_Alipay extends Eshop_Action_Common {
     protected $_model_class='Common_Model_Orders';
     
+	/************支付宝配置参数******************/
+	public $aliapy_config = array(
+		'partner' => '2088702162489557',
+		'key' => 'k9gnpm4nfd1qmrzyq3y4nzwj31m6fjc5',
+		'seller_email' => '988238@qq.com',
+		'return_url' => 'http://www.whshop.com.cn/app/eshop/alipay/direct_notify',
+		'notify_url' => 'http://www.whshop.com.cn/app/eshop/alipay/secrete_notify',
+		'sign_type'  => 'MD5',
+		'input_charset' => 'utf-8',
+		'transport' => 'http'
+	);
     /**
      * 订单编号
      * 
      * @var string
      */
     private $_order_ref = null;
-    
-    /************支付宝配置参数******************/
-    /**
-     * 合作伙伴ID
-     * 
-     * @var string
-     */
-    private $partner = '2088702162489557';
-    /**
-     * 安全检验码
-     * 
-     * @var string
-     */
-    public $security_code = 'k9gnpm4nfd1qmrzyq3y4nzwj31m6fjc5';
-    /**
-     * 卖家邮箱
-     * 
-     * @var string
-     */
-    public $seller_email = "988238@qq.com";
-    /**
-     * 字符编码格式 目前支持GBK或utf-8
-     * 
-     * @var string
-     */
-    public $_input_charset = "utf-8";
-    /**
-     * 加密方式  系统默认(不要修改)
-     * 
-     * @var string
-     */
-    public $sign_type = "MD5";
-    /**
-     * 访问模式,你可以根据自己的服务器是否支持ssl访问而选择http以及https访问模式(系统默认,不要修改)
-     * 
-     * @var string
-     */
-    public $transport = "https";
-    /**
-     * 异步返回地址
-     * 
-     * @var string
-     */
-    public $notify_url = "http://www.whshop.com.cn/app/eshop/alipay/secrete_notify";
-    /**
-     * 同步返回地址
-     * 
-     * @var string
-     */
-    public $return_url = "http://www.whshop.com.cn/app/eshop/alipay/direct_notify";
     /**
      * 网站商品的展示地址,可以为空
      * 
@@ -110,28 +71,62 @@ class Eshop_Action_Alipay extends Eshop_Action_Common {
             return $this->_hintResult("订单[$reference]已付款！",false);
         }
         //start to pay
-        $pay_money = $model['pay_money'];
-        $subject = "www.whshop.com.cn";
+        $subject = "万行商城商品";
         $body = "WHshop.com.cn Eshop";
+
+		$price	= $model['total_money'];	//订单总金额，显示在支付宝收银台里的“应付总额”里
+
+		$logistics_fee		= $model['freight'];				//物流费用，即运费。
+		$logistics_type		= "EXPRESS";			//物流类型，三个值可选：EXPRESS（快递）、POST（平邮）、EMS（EMS）
+		$logistics_payment	= "SELLER_PAY";			//物流支付方式，两个值可选：SELLER_PAY（卖家承担运费）、BUYER_PAY（买家承担运费）
+
+		$quantity			= "1";					//商品数量，建议默认为1，不改变值，把一次交易看成是一次下订单而非购买一件商品。
+
+		//买家收货信息（推荐作为必填）
+		//该功能作用在于买家已经在商户网站的下单流程中填过一次收货信息，而不需要买家在支付宝的付款流程中再次填写收货信息。
+		//若要使用该功能，请至少保证receive_name、receive_address有值
+		//收货信息格式请严格按照姓名、地址、邮编、电话、手机的格式填写
+		$receive_name		= $model['name'];
+		$receive_address	= $model['address'];
+		$receive_zip		= $model['zip'];
+		$receive_phone		= $model['telephone'];
+		$receive_mobile		= $model['mobie'];
+		
         //支付宝传递参数
-        $parameter = array(
-            'service'=>'create_partner_trade_by_buyer',
-            'partner'=>$this->partner,
-            'return_url'=>$this->return_url,
-            'notify_url'=>$this->notify_url,
-            '_input_charset'=>$this->_input_charset,
-            'subject'=>$subject, #商品名称，必填
-            'body'=>$body, #商品描述，必填
-            'out_trade_no'=>$reference, #商品外部交易号，必填,每次测试都须修改
-            'total_fee'=>$pay_money,
-            'payment_type'=>"1", #默认为1，不需要修改
-            'show_url'=>$this->show_url, #商品相关网站
-            'seller_email'=>$this->seller_email #卖家邮箱，必填
-        );
-        $alipay = new Anole_Util_AlipayService($parameter,$this->security_code,$this->sign_type,$this->transport);
-        $link = $alipay->create_url();
+		$parameter = array(
+			"service"			=> "create_partner_trade_by_buyer",
+			"payment_type"		=> "1",
+
+			"partner"			=> trim($this->aliapy_config['partner']),
+			"_input_charset"	=> trim(strtolower($this->aliapy_config['input_charset'])),
+		    "seller_email"		=> trim($this->aliapy_config['seller_email']),
+		    "return_url"		=> trim($this->aliapy_config['return_url']),
+		    "notify_url"		=> trim($this->aliapy_config['notify_url']),
+
+		    "out_trade_no"		=> $reference,
+			
+		    "subject"			=> $subject,
+		    "body"				=> $body,
+		    "price"				=> $price,
+			"quantity"			=> $quantity,
+
+			"logistics_fee"		=> $logistics_fee,
+			"logistics_type"	=> $logistics_type,
+			"logistics_payment"	=> $logistics_payment,
+
+			"receive_name"		=> $receive_name,
+			"receive_address"	=> $receive_address,
+			"receive_zip"		=> $receive_zip,
+			"receive_phone"		=> $receive_phone,
+			"receive_mobile"	=> $receive_mobile,
+
+	        "show_url"			=> $this->show_url
+		);
+		
+        $alipay = new Common_Util_AlipayService($this->aliapy_config);
+        $html_text = $alipay->create_partner_trade_by_buyer($parameter);
         
-        return $this->redirectResult($link);
+        return $this->rawResult($html_text);
     }
     
     /**
@@ -141,10 +136,14 @@ class Eshop_Action_Alipay extends Eshop_Action_Common {
      * @return string
      */
     public function secreteNotify(){
-        $alipay = new Anole_Util_AlipayNotify($this->partner,$this->security_code,$this->sign_type,$this->_input_charset,$this->transport);
-        $verify_result = $alipay->notify_verify();
+        $alipay = new Common_Util_AlipayNotify($this->aliapy_config);
+        $verify_result = $alipay->verifyNotify();
         
         if($verify_result){
+			#$out_trade_no	= $_POST['out_trade_no'];	    //获取订单号
+		    $trade_no		= $_POST['trade_no'];	    	//获取支付宝交易号
+		    $total			= $_POST['price'];				//获取总价格
+		
             $order_ref = $_POST['out_trade_no'];
             $payAmount = $_POST['total_fee'];
             
@@ -155,7 +154,8 @@ class Eshop_Action_Alipay extends Eshop_Action_Common {
             $receive_mobile = $_POST['receive_mobile'];
             
             $trade_status = $_POST['trade_status'];
-            if($trade_status == 'TRADE_FINISHED' || $trade_status == 'TRADE_SUCCESS'){
+			$status_array = array('WAIT_SELLER_SEND_GOODS','WAIT_BUYER_CONFIRM_GOODS','TRADE_FINISHED');
+            if(in_array($trade_status,$status_array)){
                 //支付成功
                 self::warn("verify_success", __METHOD__);
                 try{
@@ -213,18 +213,15 @@ class Eshop_Action_Alipay extends Eshop_Action_Common {
      * @return string
      */
     public function directNotify(){
-        $alipay = new Anole_Util_AlipayNotify($this->partner,$this->security_code,$this->sign_type,$this->_input_charset,$this->transport);
-        $verify_result = $alipay->return_verify();
+        $alipay = new Common_Util_AlipayNotify($this->aliapy_config);
+        $verify_result = $alipay->verifyReturn();
         
+		// $out_trade_no	= $_GET['out_trade_no'];	//获取订单号
+	    $trade_no		= $_GET['trade_no'];		//获取支付宝交易号
+	    $total_fee		= $_GET['price'];			//获取总价格
         //获取支付宝的反馈参数
         $order_ref = $_GET['out_trade_no'];
-        $payAmount = $_GET['total_fee'];
-        
-        $receive_name = $_GET['receive_name'];
-        $receive_address = $_GET['receive_address'];
-        $receive_zip = $_GET['receive_zip'];
-        $receive_phone = $_GET['receive_phone'];
-        $receive_mobile = $_GET['receive_mobile'];
+        $payAmount = $_GET['price'];
         
         $msg = "";
         if($verify_result){
@@ -232,7 +229,7 @@ class Eshop_Action_Alipay extends Eshop_Action_Common {
             self::debug("通过支付宝支付成功！",__METHOD__);
             
             $trade_status = $_GET['trade_status'];
-            if($trade_status == 'TRADE_FINISHED' || $trade_status == 'TRADE_SUCCESS'){
+            if($trade_status == 'WAIT_SELLER_SEND_GOODS'){
                 try{
                     $order = new Common_Model_Orders();
                     $options = array(
@@ -261,7 +258,6 @@ class Eshop_Action_Alipay extends Eshop_Action_Common {
                     $result = "fail";
                     self::warn("支付宝支付订单[$order_ref]异常：".$e->getMessage(),__METHOD__);
                 }
-                
             }else{
                 //支付失败
                 self::debug("通过支付宝支付失败！",__METHOD__);
