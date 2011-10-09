@@ -123,7 +123,7 @@
 							<form action="{Common_Smarty_Url_format key='add_cart' id=$product.id}" method="post">
 								<input type="hidden" name="id" value="{$product.id}" id="com_sku" />
 								<div class="jaline">
-									<label>型 号：{if $product.width or $product.height or $product.length}{$product.length} x {$product.width} x {$product.height} cm{else}均码{/if}</label>
+									<label>外形尺寸：{if $product.width or $product.height or $product.length}{$product.length} x {$product.width} x {$product.height} cm{else}均码{/if}</label>
 									<input type="hidden" name="size" value="F" id="com_size" />
 								</div>
 								<div class="mb-10">

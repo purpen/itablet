@@ -39,6 +39,9 @@
 					<a href="{Common_Smarty_Url_format key=channel slug=notepad}" {if $current_menu == 'tab_notepad'}class="actived"{/if}>笔记本</a>
 				</li>
 				<li>
+					<a href="{Common_Smarty_Url_format key=channel slug=xiaoseyi}" {if $current_menu == 'tab_xiaoseyi'}class="actived"{/if}>校色仪</a>
+				</li>
+				<li>
 					<a href="{Common_Smarty_Url_format key=channel slug=peijian}" {if $current_menu == 'tab_peijian'}class="actived"{/if} >配件</a>
 				</li>
 				<li>
