@@ -235,6 +235,7 @@ a:hover{text-decoration:underline;}
     display: block;
     line-height: 33px;
     text-align: center;
+	font-weight: bold;
     text-decoration: none;
     width: 70px;
 }
@@ -289,6 +290,7 @@ a:hover{text-decoration:underline;}
 	line-height:60px;
 	text-indent:27px;
 	font-size:14px;
+	font-weight: bold;
 }
 #carousel .carousel_nav li.active a, #carousel .carousel_nav li:hover a{
 	background:url("/images/eshop/icon-direct.png") no-repeat scroll 247px center #FF6600;
@@ -468,6 +470,7 @@ a:hover{text-decoration:underline;}
 }
 .filter-option .tabpage span {
 	margin:0 12px 0 5px;
+	font-weight: bold;
 }
 .filter-option .tabpage .firstpage {
 	background-position:-24px -2px;

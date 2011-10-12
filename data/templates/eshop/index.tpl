@@ -36,8 +36,16 @@
 	</div>
 	
 	<div id="container">
+		{Common_Smarty_Advertise_findAdone number="index-sale" var='adn'}
+		{if $adn}
+		<div class="box pt-10">
+			<a href="{$adn.link}" title="{$adn.title}" target="_blank">
+				<img src="{$adn.thumb}" alt="{$adn.title}" />
+			</a>
+		</div>
+		{/if}
 		
-		<div class="box pt-15">
+		<div class="box pt-10">
 			<h3><img src="/images/eshop/stuff-catetitle.png" alt="产品分类"/></h3>
 			
 			<ul class="mt-20 big-brands clearfix">
@@ -67,7 +75,7 @@
 					</a>
 				</li>
 				<li class="last">
-					<a href="#">
+					<a href="{Common_Smarty_Url_format key=channel slug=peijian}">
 						<img src="/images/eshop/brand-peijian.jpg" alt="配件"/>
 					</a>
 				</li>

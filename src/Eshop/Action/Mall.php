@@ -522,6 +522,11 @@ class Eshop_Action_Mall extends Eshop_Action_Common {
         $this->putContext('product', $product);
         $this->putContext('visited_products', $visited_products);
 		$this->putContext('like_products', $like_products);
+		
+		# 配送说明
+		$helper = new Common_Model_Content();
+		$pagebody = $helper->findFirst(array('condition'=>'name=?','vars'=>array('sendsmary')))->getResultArray();
+		$this->putContext('hpage_body', $pagebody);
 
 		$this->putSharedParam();
         

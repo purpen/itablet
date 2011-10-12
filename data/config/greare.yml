@@ -58,4 +58,5 @@ all:
     helper:"/helper/%s.html"
     # /app/eshop/helper/introduce/name/%s
     introduce:"/helper/introduce/%s.html"
+    build:"/app/eshop/index/build"
     

@@ -21,6 +21,6 @@
 	<h3>售后服务</h3>
 	<ul>
 		<li><a href="{Common_Smarty_Url_format key=helper name=return_policy}" >退换货原则</a></li>
-		<li><a href="{Common_Smarty_Url_format key=helper name=apply_return}" >产品保修条款</a></li>
+		<li><a href="{Common_Smarty_Url_format key=helper name=product_service}" >产品保修条款</a></li>
 	</ul>
 </div>

@@ -232,7 +232,7 @@ class Eshop_Action_Index extends Eshop_Action_Common {
         $datetime = Common_Util_Date::getNow();
         #'fanjun67@gmail.com','2008xiaobai@gmail.com',
         $to = array('purpen.w@gmail.com');
-        $subject = '100jia订单提醒';
+        $subject = 'whshop订单提醒';
         $body = "客户订单[$order_ref]于 $datetime 已成功下单，请及时查看处理～"; 
         
         $model = new Common_Model_Postoffice();
@@ -242,8 +242,8 @@ class Eshop_Action_Index extends Eshop_Action_Common {
             $model->setMailto($to[$i]);
             $model->setSubject($subject);
             $model->setBody($body);
-            $model->setMailfrom('100jia.cc@gmail.com');
-            $model->setFromName('100jia');
+            $model->setMailfrom('whshop@gmail.com');
+            $model->setFromName('whshop');
             $model->setCreatedOn($datetime);
             $model->setState(Common_Model_Postoffice::DEFAULT_STATE);
             $model->save();
@@ -260,6 +260,13 @@ class Eshop_Action_Index extends Eshop_Action_Common {
     public function picture(){
     	
     }
+	/**
+	 * 显示正在建设中
+	 */
+	public function build(){
+		$this->putSharedParam();
+    	return $this->smartyResult('eshop.build');
+	}
     
     /*****************************设置参数******************************/
     public function setSlug($v){
