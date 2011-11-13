@@ -8,7 +8,7 @@ class Common_Model_Orders extends Common_Model_Table_Orders {
 	
 	const WAIT_TIME = 3; # 3 days
 	//默认运费
-	private $_fees = 15;
+	private $_fees = 0;
     
     //关系映射表
     protected $_relation_map = array(
@@ -37,7 +37,7 @@ class Common_Model_Orders extends Common_Model_Table_Orders {
     private $transfer_methods = array(
         'a'=>array(
             'name'=>'普通快递',
-            'freight'=>15
+            'freight'=>0
         )
     );
     /**
