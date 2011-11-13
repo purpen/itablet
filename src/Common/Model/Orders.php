@@ -154,10 +154,10 @@ class Common_Model_Orders extends Common_Model_Table_Orders {
 		$fees = $this->_fees;
 		//超重
 		if($overweight){
-			$this->_fees = 15;
+			$this->_fees = 0;
 		}
 		if($city == 1 || $city == '北京'){
-			$this->_fees = 6;
+			$this->_fees = 0;
 		}
 		return $this;
 	}
