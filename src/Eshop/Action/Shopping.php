@@ -677,8 +677,8 @@ class Eshop_Action_Shopping extends Eshop_Action_OrderParams {
 		
 		//成功提交订单后，发送提醒邮件<异步进程处理>
         $datetime = Common_Util_Date::getNow();
-        $to = array('fanjun67@gmail.com','2008xiaobai@gmail.com','purpen.w@gmail.com');
-        $subject = '100jia订单提醒';
+        $to = array('purpen.w@gmail.com');
+        $subject = 'whshop订单提醒';
         $body = "客户订单[$order_ref]于 $datetime 已成功下单，请及时查看处理～"; 
         
         for($i=0;$i<count($to);$i++){
