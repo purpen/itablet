@@ -2,7 +2,7 @@
 	<div class="site-box mt-10 clearfix">
 		<div class="logosite fl">
 			<a href="{Common_Smarty_Url_format key=domain}" title="万行商城">
-				<img src="/images/eshop/wanhang-logo.jpg" alt="万行商城" />
+				<img src="/images/eshop/wanhang-new-logo.jpg" alt="万行商城" />
 			</a>
 		</div>
 		
@@ -45,7 +45,7 @@
 					<a href="{Common_Smarty_Url_format key=channel slug=peijian}" {if $current_menu == 'tab_peijian'}class="actived"{/if} >配件</a>
 				</li>
 				<li>
-					<a href="{Common_Smarty_Url_format key=domain}" >图书</a>
+					<a href="{Common_Smarty_Url_format key=channel slug=book}" {if $current_menu == 'tab_book'}class="actived"{/if} >图书</a>
 				</li>
 				<li>
 					<a href="{Common_Smarty_Url_format key=domain}" >教育</a>

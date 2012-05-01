@@ -202,7 +202,7 @@ a:hover{text-decoration:underline;}
 }
 .logosite {
 	width: 200px;
-	padding-left:20px;
+	padding-left:0px;
 }
 .auth .topnav {
 	margin-top: 3px;
@@ -296,6 +296,14 @@ a:hover{text-decoration:underline;}
 	background:url("/images/eshop/icon-direct.png") no-repeat scroll 247px center #FF6600;
 	color:#fff;
 	text-decoration:none;
+}
+
+#friend-links {
+	background-color:#E0E0E0;
+	border-radius:3px;
+}
+#friend-links a {
+	color:#666;
 }
 
 .big-brands {

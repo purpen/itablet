@@ -105,6 +105,8 @@
 	
 	{smarty_include eshop.common.site-help}
 	
+	{smarty_include eshop.common.friend_links}
+	
 	{smarty_include eshop.common.footer}
 </div>
 </body>

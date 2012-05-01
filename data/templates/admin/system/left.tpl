@@ -104,6 +104,12 @@
 								<a href="/app/admin/appearance/find_tpl_list" target="mainFrame">编辑主题</a>
 							</li>
 						</ul>
+						<div class="am-submenu-head">链接管理</div>
+						<ul>
+							<li class="wp-first-item">
+								<a class="wp-first-item" href="/app/admin/link" target="mainFrame">友情链接</a>
+							</li>
+						</ul>
 					 </div>
 				</li>
 				<li id="menu-media" class="am-bg wp-has-submenu">

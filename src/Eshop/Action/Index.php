@@ -67,6 +67,10 @@ class Eshop_Action_Index extends Eshop_Action_Common {
     	$market_product_list = $product->find($options)->getResultArray();
 		//本周推荐商品
 		$stick_product_list = $product->findStickProductList();
+		
+		//获取友情链接
+		$link_list = $this->_getFriendLinks();
+		$this->putContext('link_list', $link_list);
     	
 		$this->putContext('market_product_list', $market_product_list);
     	$this->putContext('stick_product_list', $stick_product_list);

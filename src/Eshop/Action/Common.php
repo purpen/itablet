@@ -93,6 +93,26 @@ abstract class Eshop_Action_Common extends Anole_Dispatcher_Action_ModelDriven {
 		$this->putContext('total_money', $total_money);
         $this->putContext('items_count', $items_count);
     }
+	/**
+	 * 获取友情链接
+	 */
+	protected function _getFriendLinks($order_by='sort',$size=30){
+		$model = new Common_Model_Link();
+		if($order_by == 'time'){
+            $order = 'created_at DESC';
+        }else{
+            $order = 'sort ASC';
+        }
+		//get current data
+        $options = array(
+           'condition'=>array(),
+           'vars'=>array(),
+           'order'=>$order,
+           'page'=>1,
+           'size'=>$size
+        );
+        return $link_list = $model->find($options);
+	}
 	
 	public function setId($v){
 		$this->_id = $v;
