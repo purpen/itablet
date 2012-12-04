@@ -134,7 +134,7 @@
 									<input type="submit" name="addtocart" value="放入购物车" class="addtocart" />
 								</div>
 								<div class="a999 rated">
-									<label>用户评论：</label> <a href="#view_comment" class="jq_a_ajax" />已有<strong id="comment_count1">{$product.coment_count|default:0}</strong>条评论</a>
+									<label>用户评论：</label> <a href="#view_comment" class="jq_a_ajax" />已有<strong id="comment_count1">{$product.coment_count|default:0}</strong>条评论，已销售 {$product.sale_count} 个</a>
 								</div>
 							</form>
 						</div>
