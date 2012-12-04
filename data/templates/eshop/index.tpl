@@ -59,12 +59,12 @@
 						<img src="/images/eshop/brand-bamboo.jpg" alt="wacom"/>
 					</a>
 				</li>
-				<li>
+				<li class="last">
 					<a href="http://www.whshop.com.cn/mall/c-FGRM-0-0.html">
 						<img src="/images/eshop/brand-spider.jpg" alt="wacom"/>
 					</a>
 				</li>
-				<li class="last">
+				<li>
 					<a href="{Common_Smarty_Url_format key='brand_product' id=2}">
 						<img src="/images/eshop/brand-hp.jpg" alt="hp"/>
 					</a>
