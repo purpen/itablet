@@ -12,7 +12,7 @@ class Eshop_Action_Alipay extends Eshop_Action_Common {
 	public $aliapy_config = array(
 		'partner' => '2088702162489557',
 		'key' => 'k9gnpm4nfd1qmrzyq3y4nzwj31m6fjc5',
-		'seller_email' => '12299300@qq.com',
+		'seller_email' => '122999300@qq.com',
 		'return_url' => 'http://www.whshop.com.cn/app/eshop/alipay/direct_notify',
 		'notify_url' => 'http://www.whshop.com.cn/app/eshop/alipay/secrete_notify',
 		'sign_type'  => 'MD5',
